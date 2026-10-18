@@ -323,11 +323,6 @@
             <div class="p-6 sm:p-8 space-y-6">
                 <h3 id="modal-title" class="text-2xl sm:text-3xl font-bold text-gray-900"></h3>
                 <p id="modal-full-desc" class="text-gray-600 leading-relaxed text-base sm:text-lg"></p>
-                
-                <div class="bg-orange-50 border border-orange-100 rounded-2xl p-5 space-y-3">
-                    <h4 class="font-bold text-orange-900 text-sm uppercase tracking-wider">รายละเอียดกิจกรรมเพิ่มเติม</h4>
-                    <ul id="modal-details-list" class="space-y-2 text-sm sm:text-base text-gray-700"></ul>
-                </div>
 
                 <div class="pt-4 flex justify-end">
                     <button onclick="closeProjectModal()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-2.5 rounded-xl font-semibold transition">
@@ -538,22 +533,6 @@
             document.getElementById('modal-title').textContent = proj.title;
             document.getElementById('modal-category').textContent = proj.category || 'รายละเอียดกิจกรรม';
             document.getElementById('modal-full-desc').textContent = proj.fullDescription || proj.description;
-
-            const detailsList = document.getElementById('modal-details-list');
-            detailsList.innerHTML = '';
-            if (proj.details) {
-                const items = String(proj.details).split(';');
-                items.forEach(item => {
-                    if (item.trim()) {
-                        const li = document.createElement('li');
-                        li.className = 'flex items-center gap-2';
-                        li.innerHTML = `<span class="text-orange-500 font-bold">•</span> ${item.trim()}`;
-                        detailsList.appendChild(li);
-                    }
-                });
-            } else {
-                detailsList.innerHTML = '<li>ไม่มีข้อมูลรายละเอียดเพิ่มเติม</li>';
-            }
 
             const modal = document.getElementById('project-modal');
             modal.classList.remove('hidden');
